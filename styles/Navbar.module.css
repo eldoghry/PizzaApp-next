@@ -1,0 +1,8 @@
+.container {
+  width: 100vw;
+  height: 100px;
+  background-color: var(--mainColor);
+  position: fixed;
+  z-index: 999;
+  padding: 20px;
+}
