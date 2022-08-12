@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
 }
 
 a {
@@ -16,7 +18,17 @@ a {
 }
 
 :root {
-  --mainColor: #f83e4b;
+  /* COLORS */
+  --color-main: #f83e4b;
+  --color-black: #000;
+  --color-white-1: #fbfbfb;
+
+  /* FONTS */
+  --font-size-tiny: 10px;
+  --font-size-small: 12px;
+  --font-size-medium: 16px;
+  --font-size-large: 18px;
+  --font-size-xl: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
