@@ -1,12 +1,14 @@
 .container {
   width: 100vw;
   height: 100px;
+
   background-color: var(--color-main);
-  position: fixed;
+  position: sticky;
   z-index: 999;
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: var(--color-white-1);
   font-size: var(--font-size-large);
   text-transform: capitalize;
@@ -26,6 +28,7 @@
 }
 
 .item:last-child {
+  flex: 1;
   display: flex;
   justify-content: flex-end;
 }
@@ -39,6 +42,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .texts {
@@ -48,7 +52,8 @@
 }
 
 .text:first-child {
-  font-weight: 700;
+  font-weight: 400;
+  font-size: var(--font-size-medium);
 }
 
 .list {
@@ -56,12 +61,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   transition: all 0.8s;
 }
 
 .listItem {
-  padding: 10px;
+  padding: 8px 10px;
   border-bottom: 5px solid transparent;
 }
 
@@ -86,7 +90,6 @@
   justify-content: center;
   align-items: center;
   font-weight: 500;
-
   position: absolute;
   top: -8px;
   right: -10px;

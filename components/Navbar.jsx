@@ -10,7 +10,7 @@ const Navbar = () => {
         </div>
 
         <div className={styles.texts}>
-          <span className={styles.text}>order now</span>
+          <span className={styles.text}>order now !</span>
           <span className={styles.text}>012 345 6789</span>
         </div>
       </div>
