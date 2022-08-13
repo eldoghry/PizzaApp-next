@@ -23,6 +23,8 @@ a {
   --color-main: #f83e4b;
   --color-black: #000;
   --color-white-1: #fbfbfb;
+  --color-grey-dark: #444;
+  --color-grey-light: #aaa;
 
   /* FONTS */
   --font-size-tiny: 10px;
@@ -30,6 +32,7 @@ a {
   --font-size-medium: 16px;
   --font-size-large: 18px;
   --font-size-xl: 20px;
+  --font-size-giant: 30px;
 }
 
 @media (prefers-color-scheme: dark) {

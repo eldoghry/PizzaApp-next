@@ -1,0 +1,32 @@
+.container {
+  /* width: 100vw; */
+  /* min-height: calc(100vh - 100px); */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: hidden; */
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: var(--font-size-giant);
+  margin-bottom: 10px;
+}
+
+.desc {
+  width: 80%;
+  color: var(--color-grey-dark);
+  font-size: var(--font-size-medium);
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 10px;
+}

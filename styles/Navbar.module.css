@@ -1,9 +1,10 @@
 .container {
   width: 100vw;
   height: 100px;
-
   background-color: var(--color-main);
   position: sticky;
+  top: 0;
+  left: 0;
   z-index: 999;
   padding: 20px;
   display: flex;
@@ -28,7 +29,6 @@
 }
 
 .item:last-child {
-  flex: 1;
   display: flex;
   justify-content: flex-end;
 }
@@ -80,6 +80,7 @@
 }
 
 .counter {
+  font-size: var(--font-size-medium);
   width: 20px;
   height: 20px;
   background-color: var(--color-white-1);
@@ -92,5 +93,5 @@
   font-weight: 500;
   position: absolute;
   top: -8px;
-  right: -10px;
+  right: -8px;
 }
