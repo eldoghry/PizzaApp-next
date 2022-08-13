@@ -22,13 +22,15 @@ a {
   /* --color-main: #fe6e28; */
   --color-main: #f83e4b;
   --color-black: #000;
+  --color-orange: #ff851b;
   --color-white-1: #fbfbfb;
-  --color-grey-dark: #444;
-  --color-grey-light: #aaa;
+  --color-grey-dark: #282828;
+  --color-grey-light: #d6d6d6;
 
   /* FONTS */
   --font-size-tiny: 10px;
-  --font-size-small: 12px;
+  --font-size-xs: 12px;
+  --font-size-small: 14px;
   --font-size-medium: 16px;
   --font-size-large: 18px;
   --font-size-xl: 20px;
