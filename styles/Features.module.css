@@ -1,9 +1,9 @@
 .container {
-  width: 100vw;
+  /* width: 100vw; */
   height: calc(100vh - 100px);
   background-color: var(--color-main);
   overflow: hidden;
-  position: relative;
+  /* position: relative; */
 }
 
 .arrowContainer {

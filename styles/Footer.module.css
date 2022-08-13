@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  /* width: 100%; */
   height: calc(60vh);
   background-color: var(--color-grey-dark);
   color: var(--color-grey-light);
