@@ -1,0 +1,139 @@
+.container {
+  min-height: 80vh;
+  padding: 40px;
+  display: flex;
+  gap: 50px;
+}
+
+.left {
+  flex: 1;
+}
+.right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.title {
+  color: var(--color-main);
+  text-transform: uppercase;
+  /* margin-bottom: 20px; */
+}
+.subtitle {
+  text-transform: uppercase;
+}
+.price {
+  /* color: var(--color-main); */
+  color: teal;
+  font-weight: 500;
+  font-size: var(--font-size-large);
+  padding: 0 0 2px;
+  border-bottom: 3px solid teal;
+  /* text-decoration: underline; */
+}
+
+.price:before {
+  content: "$";
+}
+
+.desc {
+  font-size: var(--font-size-small);
+  color: var(--color-grey-light-2);
+  width: 80%;
+}
+
+.sizes {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.size:first-child {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.size:nth-child(2) {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.size:last-child {
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.size input {
+  display: none;
+}
+
+.size label {
+  cursor: pointer;
+}
+
+.sizeTitle {
+  position: absolute;
+  background: teal;
+  color: white;
+  font-weight: 400;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: var(--font-size-small);
+  text-transform: capitalize;
+  top: -12px;
+  left: 20px;
+}
+
+.size input:checked + label .sizeTitle {
+  background-color: var(--color-main);
+}
+
+.ingrediants {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.option input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-main);
+}
+
+.option label {
+  font-size: var(--font-size-small);
+  text-transform: capitalize;
+
+  cursor: pointer;
+}
+
+.add {
+  margin-top: 30px;
+}
+
+.quantity {
+  width: 80px;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.button {
+  padding: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-white-1);
+  background-color: var(--color-main);
+  border: none;
+  cursor: pointer;
+}
