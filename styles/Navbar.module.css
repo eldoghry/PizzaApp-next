@@ -1,7 +1,12 @@
 .container {
   /* width: 100vw; */
   height: 100px;
-  background-color: var(--color-main);
+  background: rgb(254, 110, 40);
+  background: radial-gradient(
+    circle,
+    rgba(254, 110, 40, 1) 35%,
+    rgba(254, 129, 40, 1) 100%
+  );
   position: sticky;
   top: 0;
   left: 0;

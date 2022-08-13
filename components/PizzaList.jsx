@@ -11,9 +11,7 @@ const PizzaList = () => {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti,
         minus repudiandae. Molestias eveniet nisi doloremque sint, provident
         inventore delectus, a nesciunt accusamus illum similique dolorum non
-        officiis nulla. Ad, possimus.Lorem ipsum. Molestias eveniet nisi
-        doloremque sint, provident inventore delectus, a nesciunt accusamus
-        illum similique dolorum non officiis nulla. Ad, possimus.Lorem ipsum.
+        officiis nulla.
       </p>
 
       <div className={styles.wrapper}>

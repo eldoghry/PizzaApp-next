@@ -42,7 +42,13 @@ const Features = () => {
         {imgs.map((img, index) => {
           return (
             <div className={styles.imgContainer} key={index}>
-              <Image src={img} alt="pizza" objectFit="cover" layout="fill" />
+              <Image
+                src={img}
+                alt="pizza"
+                objectFit="cover"
+                layout="fill"
+                className={styles.img}
+              />
             </div>
           );
         })}
