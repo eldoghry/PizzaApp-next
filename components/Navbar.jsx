@@ -1,5 +1,6 @@
 import styles from "../styles/Navbar.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -18,22 +19,45 @@ const Navbar = () => {
       <div className={styles.item}>
         <ul className={styles.list}>
           <li className={styles.listItem}>
-            <a href="#">Home</a>
+            <Link href={`/`}>Home</Link>
           </li>
-          <li className={styles.listItem}>Products</li>
-          <li className={styles.listItem}>Menu</li>
-          <Image src="/img/logo.png" alt="logo" width="160px" height="69px" />
-          <li className={styles.listItem}>events</li>
-          <li className={styles.listItem}>content</li>
-          <li className={styles.listItem}>blog</li>
+          <li className={styles.listItem}>
+            <Link href={`#products`}>Products</Link>
+          </li>
+
+          <li className={styles.listItem}>
+            <Link href={`#products`}>Menu</Link>
+          </li>
+
+          <Link href={`/`}>
+            <Image
+              style={{ cursor: "pointer" }}
+              src="/img/logo.png"
+              alt="logo"
+              width="160px"
+              height="69px"
+            />
+          </Link>
+
+          <li className={styles.listItem}>
+            <Link href={`#`}>events</Link>
+          </li>
+          <li className={styles.listItem}>
+            <Link href={`#`}>content</Link>
+          </li>
+          <li className={styles.listItem}>
+            <Link href={`#`}>blog</Link>
+          </li>
         </ul>
       </div>
 
       <div className={styles.item}>
-        <div className={styles.cart}>
-          <Image src="/img/cart.png" alt="" width="35" height="35" />
-          <span className={styles.counter}>3</span>
-        </div>
+        <Link href={`/cart`}>
+          <div className={styles.cart}>
+            <Image src="/img/cart.png" alt="" width="35" height="35" />
+            <span className={styles.counter}>3</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
