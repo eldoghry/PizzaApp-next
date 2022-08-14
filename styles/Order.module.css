@@ -1,0 +1,157 @@
+@keyframes inProgress {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  padding: 4rem;
+  display: flex;
+}
+
+.left {
+  flex: 3;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.right {
+  height: 250px;
+  flex: 1;
+  background-color: var(--color-grey-dark);
+  color: var(--color-white-1);
+}
+
+.row:last-child {
+  margin-top: 2rem;
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 2rem;
+  text-align: left;
+}
+
+.tr {
+  font-size: var(--font-size-medium);
+}
+
+.tr th {
+  text-transform: uppercase;
+}
+
+.tr th:first-child {
+  padding-left: 1rem;
+}
+
+.tr td {
+  color: var(--color-grey-dark);
+  font-size: var(--font-size-large);
+}
+
+.name {
+  text-transform: uppercase;
+  color: var(--color-main);
+  font-weight: 500;
+}
+
+.extras {
+  font-size: var(--font-size-medium);
+}
+
+.subtotal {
+  font-weight: 700;
+}
+
+.price::before,
+.quantity::before,
+.subtotal::before {
+  content: "$";
+}
+
+.imgContainer {
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+}
+
+/* states classes */
+.done,
+.undone,
+.inProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inProgress {
+  animation: 1s infinite ease alternate inProgress;
+}
+
+.undone {
+  opacity: 0.5;
+}
+
+.inProgress .checkedIcon,
+.undone .checkedIcon {
+  display: none;
+}
+
+.stateTitle {
+  font-size: var(--font-size-medium);
+  text-transform: capitalize;
+  margin: 1.2rem 0;
+}
+
+.wrapper {
+  width: 90%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: var(--font-size-medium);
+}
+
+.heading {
+  font-size: var(--font-size-giant);
+  text-transform: capitalize;
+  margin: 0 0 1rem;
+}
+
+.text {
+  text-transform: capitalize;
+}
+
+.text:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  padding-right: 1rem;
+}
+
+.btn,
+.btn:link {
+  margin-top: 2rem;
+  color: var(--color-main);
+  border: none;
+  border-radius: 3px;
+  padding: 0.8rem 1.1rem;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-main);
+  color: var(--color-white-1);
+}
