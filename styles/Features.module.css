@@ -30,3 +30,13 @@
   /* filter: grayscale(0.2); */
   filter: brightness(0.9);
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: 300px;
+  }
+
+  .arrowContainer {
+    transform: scale(0.8);
+  }
+}

@@ -94,11 +94,11 @@
 }
 
 .inProgress {
-  animation: 1s infinite ease alternate inProgress;
+  animation: .8s infinite ease alternate inProgress;
 }
 
 .undone {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .inProgress .checkedIcon,

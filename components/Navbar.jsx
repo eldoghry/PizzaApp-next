@@ -7,7 +7,12 @@ const Navbar = () => {
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.callButton}>
-          <Image src="/img/telephone.png" alt="" width="30" height="30" />
+          <Image
+            src="/img/telephone.png"
+            alt=""
+            width={30}
+            height={30}
+          />
         </div>
 
         <div className={styles.texts}>

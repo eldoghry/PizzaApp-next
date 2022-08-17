@@ -1,8 +1,8 @@
 .container {
   min-height: 80vh;
-  padding: 40px;
+  padding: 4rem;
   display: flex;
-  gap: 50px;
+  gap: 5rem;
 }
 
 .left {
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .title {
@@ -51,20 +51,20 @@
 }
 
 .size:first-child {
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   position: relative;
 }
 
 .size:nth-child(2) {
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
   position: relative;
 }
 
 .size:last-child {
-  width: 70px;
-  height: 70px;
+  width: 7rem;
+  height: 7rem;
   position: relative;
 }
 
@@ -85,8 +85,8 @@
   border-radius: 10px;
   font-size: var(--font-size-small);
   text-transform: capitalize;
-  top: -12px;
-  left: 20px;
+  top: -1.2rem;
+  left: 2rem;
 }
 
 .size input:checked + label .sizeTitle {
@@ -136,4 +136,41 @@
   background-color: var(--color-main);
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    width: 200px !important;
+    height: 200px !important;
+    align-self: center;
+  }
+
+  .title {
+    font-size: var(--font-size-giant);
+  }
+
+  .price {
+    font-size: var(--font-size-xl);
+  }
+
+  .desc {
+    font-size: var(--font-size-large);
+  }
+
+  .sizes {
+    width: 60%;
+  }
+
+  .ingrediants {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .option label {
+    font-size: var(--font-size-large);
+  }
 }

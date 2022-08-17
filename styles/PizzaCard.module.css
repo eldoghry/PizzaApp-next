@@ -1,7 +1,7 @@
 .container {
   width: 22%;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 2rem;
+  border-radius: 0.5rem;
   box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -27,4 +27,14 @@
   text-align: center;
   font-size: var(--font-size-medium);
   color: var(--color-grey-dark);
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 45%;
+  }
+
+  .desc {
+    font-size: var(--font-size-large);
+  }
 }

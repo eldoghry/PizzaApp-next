@@ -29,13 +29,13 @@ a {
   --color-grey-light-2: #7a7a7a;
 
   /* FONTS */
-  --font-size-tiny: 10px;
-  --font-size-xs: 12px;
-  --font-size-small: 14px;
-  --font-size-medium: 16px;
-  --font-size-large: 18px;
-  --font-size-xl: 20px;
-  --font-size-giant: 30px;
+  --font-size-tiny: 1rem;
+  --font-size-xs: 1.2rem;
+  --font-size-small: 1.4rem;
+  --font-size-medium: 1.6rem;
+  --font-size-large: 1.8rem;
+  --font-size-xl: 2rem;
+  --font-size-giant: 3rem;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -60,12 +60,12 @@ a {
   border: 3px solid #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@media screen and (max-width: 480px) {
+  html,
   body {
-    color: white;
-    background: black;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 8px;
   }
 }
