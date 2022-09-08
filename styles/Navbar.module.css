@@ -36,6 +36,7 @@
 .item:last-child {
   display: flex;
   justify-content: flex-end;
+  background-color: bisque;
 }
 
 .callButton {
@@ -85,6 +86,42 @@
   cursor: pointer;
 }
 
+.toggleMenu {
+  width: 40px;
+  background-color: aquamarine;
+  margin-left: 20px;
+}
+
+.toggleMenu span::before,
+.toggleMenu span::after,
+.toggleMenu span {
+  width: 100%;
+  display: inline-block;
+  background-color: var(--color-main);
+  border: 2px solid var(--color-main);
+  border-radius: 3px;
+}
+
+.toggleMenu span {
+  position: relative;
+}
+
+.toggleMenu span::before,
+.toggleMenu span::after {
+  position: absolute;
+  content: "";
+}
+
+.toggleMenu span::before {
+  top: -15px;
+  left: 0;
+}
+
+.toggleMenu span::after {
+  top: 15px;
+  left: 0;
+}
+
 .counter {
   font-size: var(--font-size-medium);
   width: 20px;
@@ -123,4 +160,57 @@
     font-weight: 600;
     font-size: var(--font-size-xl);
   }
+}
+
+@media screen and (max-width: 768px) {
+  .item:first-child {
+    flex: 3;
+  }
+
+  .item:last-child {
+    flex: 1;
+  }
+
+  .item:nth-child(2) {
+    width: 200px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    color: var(--color-main);
+    background-color: var(--color-white-1);
+  }
+
+  .NavImgContainer {
+    display: none !important;
+    background-color: blueviolet;
+  }
+
+  .NavImg {
+    background-color: aquamarine;
+    display: none !important;
+  }
+
+  .item:nth-child(2) .list {
+    padding: 0;
+    font-size: 3rem;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 8rem;
+  }
+
+  .imgLogoContainer {
+    display: none;
+  }
+
+  /* 
+  .text {
+    font-size: var(--font-size-large);
+  }
+
+  .text:first-child {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+  }  */
 }
