@@ -60,9 +60,9 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div id="toggleMenu" className={classes.toggleMenu}>
+        {/* <div id="toggleMenu" className={classes.toggleMenu}>
           <span></span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
