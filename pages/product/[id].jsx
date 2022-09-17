@@ -2,24 +2,46 @@ import styles from "../../styles/Product.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartSlice";
 
 const Product = ({ pizzaData }) => {
   const pizza = JSON.parse(pizzaData);
   const [price, setPrice] = useState(pizza.prices[0]);
+  const [quantity, setQuantity] = useState(1);
   const [extraTotalPrice, setExtraTotalPrice] = useState(0);
+  const [extra, setExtra] = useState([]);
 
   const sizeTag = ["small", "medium", "large"];
 
-  const handlePrice = (newPrice) => setPrice(newPrice);
+  const dispatch = useDispatch();
+
+  const handleSizePrice = (newPrice) => setPrice(newPrice);
 
   const handleExtra = (e) => {
     const name = e.target.id;
     const option = pizza.extraOptions.filter((o) => o.text === name)[0];
 
-    e.target.checked
-      ? setExtraTotalPrice((prev) => prev + option.price)
-      : setExtraTotalPrice((prev) => prev - option.price);
+    if (e.target.checked) {
+      setExtraTotalPrice((prev) => prev + option.price);
+      setExtra([...new Set([option.text, ...extra])]);
+    } else {
+      setExtraTotalPrice((prev) => prev - option.price);
+      setExtra([...extra.filter((o) => o !== option.text)]);
+    }
   };
+
+  const addToCartHandler = () =>
+    dispatch(
+      addProduct({
+        id: pizza._id,
+        title: pizza.title,
+        price: extraTotalPrice + price, //size price + extra price
+        quantity,
+        img: pizza.img,
+        extraOptions: extra,
+      })
+    );
 
   return (
     <div className={styles.container}>
@@ -49,7 +71,7 @@ const Product = ({ pizzaData }) => {
                   name="size"
                   id={sizeTag[index]}
                   defaultChecked={!index}
-                  onChange={() => handlePrice(price)}
+                  onChange={() => handleSizePrice(price)}
                 />
 
                 <label htmlFor={sizeTag[index]}>
@@ -85,11 +107,14 @@ const Product = ({ pizzaData }) => {
         <div className={styles.add}>
           <input
             type="number"
-            defaultValue={1}
+            defaultValue={quantity}
             min={1}
             className={styles.quantity}
+            onChange={(e) => setQuantity(+e.target.value)}
           />
-          <button className={styles.button}>add to cart</button>
+          <button className={styles.button} onClick={addToCartHandler}>
+            add to cart
+          </button>
         </div>
       </div>
     </div>
