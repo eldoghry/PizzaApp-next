@@ -7,7 +7,12 @@ const Navbar = () => {
     <div className={classes.container}>
       <div className={classes.item}>
         <div className={classes.callButton}>
-          <Image src="/img/telephone.png" alt="" width={30} height={30} />
+          <Image
+            src="/img/telephone.png"
+            alt="tele icon"
+            width={30}
+            height={30}
+          />
         </div>
 
         <div className={classes.texts}>
@@ -19,35 +24,49 @@ const Navbar = () => {
       <div className={classes.item}>
         <ul className={classes.list}>
           <li className={classes.listItem}>
-            <Link href={`/`}>Home</Link>
+            <Link href={`/`} passHref>
+              Home
+            </Link>
           </li>
           <li className={classes.listItem}>
-            <Link href={`#products`}>Products</Link>
+            <Link href={`/`} passHref>
+              Products
+            </Link>
           </li>
 
           <li className={classes.listItem}>
-            <Link href={`#products`}>Menu</Link>
+            <Link href={`/`} passHref>
+              Menu
+            </Link>
           </li>
 
-          <Link href={`/`} className={classes.NavImgContainer}>
-            <Image
-              className={classes.NavImg}
-              style={{ cursor: "pointer" }}
-              src="/img/logo.png"
-              alt="logo"
-              width="160px"
-              height="69px"
-            />
+          <Link href={`/`} className={classes.NavImgContainer} passHref>
+            <a>
+              <Image
+                className={classes.NavImg}
+                // style={{ cursor: "pointer" }}
+                src="/img/logo.png"
+                alt="logo"
+                width={160}
+                height={70}
+              />
+            </a>
           </Link>
 
           <li className={classes.listItem}>
-            <Link href={`#`}>events</Link>
+            <Link href={`#`} passHref>
+              events
+            </Link>
           </li>
           <li className={classes.listItem}>
-            <Link href={`#`}>content</Link>
+            <Link href={`#`} passHref>
+              content
+            </Link>
           </li>
           <li className={classes.listItem}>
-            <Link href={`#`}>blog</Link>
+            <Link href={`#`} passHref>
+              blog
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,31 +1,31 @@
 import styles from "../../styles/Product.module.css";
 import Image from "next/image";
 import { useState } from "react";
+import axios from "axios";
 
-const Product = () => {
-  const pizza = {
-    img: "/img/pizza.png",
-    name: "Pepproni",
-    price: 27.5,
-    prices: [27.5, 52.25, 70.8],
-    desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ex natus
-    non sint delectus quos suscipit quod, autem eligendi consequatur
-    labore quibusdam iste repellat dicta laborum voluptatibus veniam
-    impedit esse.
-  `,
-  };
-
-  const [price, setPrice] = useState(pizza.price);
+const Product = ({ pizzaData }) => {
+  const pizza = JSON.parse(pizzaData);
+  const [price, setPrice] = useState(pizza.prices[0]);
+  const [extraTotalPrice, setExtraTotalPrice] = useState(0);
 
   const sizeTag = ["small", "medium", "large"];
 
   const handlePrice = (newPrice) => setPrice(newPrice);
 
+  const handleExtra = (e) => {
+    const name = e.target.id;
+    const option = pizza.extraOptions.filter((o) => o.text === name)[0];
+
+    e.target.checked
+      ? setExtraTotalPrice((prev) => prev + option.price)
+      : setExtraTotalPrice((prev) => prev - option.price);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <Image
-          src="/img/pizza.png"
+          src={`/${pizza.img}`}
           alt=""
           objectFit="cover"
           width="500"
@@ -35,15 +35,15 @@ const Product = () => {
       </div>
 
       <div className={styles.right}>
-        <h1 className={styles.title}>{pizza.name}</h1>
-        <span className={styles.price}>{price}</span>
-        <p className={styles.desc}>{pizza.desc}</p>
+        <h1 className={styles.title}>{pizza.title}</h1>
+        <span className={styles.price}>{price + extraTotalPrice}</span>
+        <p className={styles.desc}>{pizza.description}</p>
 
         <h2 className={styles.subtitle}>choose the size</h2>
         <div className={styles.sizes}>
           {pizza.prices.map((price, index) => {
             return (
-              <div className={styles.size}>
+              <div className={styles.size} key={index}>
                 <input
                   type="radio"
                   name="size"
@@ -69,25 +69,17 @@ const Product = () => {
 
         <h2 className={styles.subtitle}>add additional ingrediants</h2>
         <div className={styles.ingrediants}>
-          <div className={styles.option}>
-            <input type="checkbox" name="double" id="double" />
-            <label htmlFor="double">double ingrediants</label>
-          </div>
-
-          <div className={styles.option}>
-            <input type="checkbox" name="cheese" id="cheese" />
-            <label htmlFor="cheese">extra cheese</label>
-          </div>
-
-          <div className={styles.option}>
-            <input type="checkbox" name="spicy" id="spicy" />
-            <label htmlFor="spicy">spicy sauce</label>
-          </div>
-
-          <div className={styles.option}>
-            <input type="checkbox" name="garlic" id="garlic" />
-            <label htmlFor="garlic">garlic sauce</label>
-          </div>
+          {pizza.extraOptions.map((option, index) => (
+            <div className={styles.option} key={index}>
+              <input
+                type="checkbox"
+                name={option.text}
+                id={option.text}
+                onChange={handleExtra}
+              />
+              <label htmlFor={option.text}>{option.text}</label>
+            </div>
+          ))}
         </div>
 
         <div className={styles.add}>
@@ -105,3 +97,12 @@ const Product = () => {
 };
 
 export default Product;
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const res = await axios.get(`http://localhost:3000/api/product/${id}`);
+
+  return {
+    props: { pizzaData: JSON.stringify(res.data.product) },
+  };
+}
