@@ -3,22 +3,92 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { ButtonWrapper } from "../../components/Paypal";
-
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+// import { ButtonWrapper } from "../../components/Paypal";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [checkout, setCheckout] = useState(false);
-
+  const router = useRouter();
   // PAYPAL
-  const amount = "2";
+  const amount = cart.total;
   const currency = "USD";
   const style = { layout: "vertical" };
+
+  const createOrder = async (data) => {
+    const res = await axios.post("http://localhost:3000/api/order", data);
+    console.log(res);
+
+    const { order } = res.data;
+
+    res.status === 201 && router.push(`order/${order._id}`);
+  };
+
+  const ButtonWrapper = ({ currency, showSpinner }) => {
+    // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+    // This is the main reason to wrap the PayPalButtons in a new component
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
+    useEffect(() => {
+      dispatch({
+        type: "resetOptions",
+        value: {
+          ...options,
+          currency: currency,
+        },
+      });
+    }, [currency, showSpinner]);
+
+    return (
+      <>
+        {showSpinner && isPending && <div className="spinner" />}
+        <PayPalButtons
+          style={style}
+          disabled={false}
+          forceReRender={[amount, currency, style]}
+          fundingSource={"paypal"}
+          createOrder={(data, actions) => {
+            return actions.order
+              .create({
+                purchase_units: [
+                  {
+                    amount: {
+                      currency_code: currency,
+                      value: amount,
+                    },
+                  },
+                ],
+              })
+              .then((orderId) => {
+                // Your code here after create the order
+                return orderId;
+              });
+          }}
+          onApprove={function (data, actions) {
+            return actions.order.capture().then(function (details) {
+              // Your code here after capture the order
+
+              console.log(details);
+
+              createOrder({
+                customer: details.purchase_units[0].shipping.name.full_name,
+                address:
+                  details.purchase_units[0].shipping.address.address_line_1,
+                status: 0, //pending
+                total: amount,
+              });
+            });
+          }}
+        />
+      </>
+    );
+  };
 
   // END OF PAYPAL
 
@@ -41,8 +111,8 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {cart.products.map((item) => (
-              <tr className={styles.tr} key={item.id}>
+            {cart.products.map((item, index) => (
+              <tr className={styles.tr} key={index}>
                 <td>
                   <Link href={`/product/${item.id}`}>
                     <div className={styles.imgContainer}>
@@ -114,7 +184,8 @@ const Cart = () => {
           {checkout && (
             <PayPalScriptProvider
               options={{
-                "client-id": "test",
+                "client-id":
+                  "AcUc5Ptl7x3x3h3ant6Z6LSO1ITma7TflABq9-Nv6dD_cqQagpd5dots_oI32PIi6I7UAxLjSYoSVK4l",
                 components: "buttons",
                 currency: "USD",
               }}
@@ -124,6 +195,7 @@ const Cart = () => {
                 showSpinner={false}
                 style={style}
                 amount={amount}
+                createOrder={createOrder}
               />
             </PayPalScriptProvider>
           )}
