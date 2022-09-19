@@ -20,7 +20,7 @@ const OrderSchema = new mongoose.Schema(
     },
 
     status: {
-      type: [Number], //0-> pending 1-> prepartion 2-> shiping 3-> deliverd
+      type: Number, //0-> pending 1-> prepartion 2-> shiping 3-> deliverd
       required: true,
       default: 0,
     },

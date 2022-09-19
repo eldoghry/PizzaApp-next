@@ -22,8 +22,8 @@ const Cart = () => {
   const style = { layout: "vertical" };
 
   const createOrder = async (data) => {
+    console.log(data);
     const res = await axios.post("http://localhost:3000/api/order", data);
-    console.log(res);
 
     const { order } = res.data;
 
@@ -73,8 +73,6 @@ const Cart = () => {
           onApprove={function (data, actions) {
             return actions.order.capture().then(function (details) {
               // Your code here after capture the order
-
-              console.log(details);
 
               createOrder({
                 customer: details.purchase_units[0].shipping.name.full_name,
@@ -195,7 +193,7 @@ const Cart = () => {
                 showSpinner={false}
                 style={style}
                 amount={amount}
-                createOrder={createOrder}
+                createOrderFn={createOrder}
               />
             </PayPalScriptProvider>
           )}

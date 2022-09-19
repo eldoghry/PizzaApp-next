@@ -1,6 +1,6 @@
 .container {
-  /* width: 100vw; */
-  /* min-height: calc(100vh - 100px); */
+  width: 100%;
+  min-height: calc(100vh - 100px);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -23,8 +23,10 @@
 }
 
 .wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25rem);
+  /* flex-wrap: wrap;*/
   align-items: center;
   justify-content: center;
   gap: 4rem;
