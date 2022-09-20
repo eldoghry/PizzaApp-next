@@ -9,6 +9,10 @@ const Order = ({ order, error }) => {
   }
 
   let status = order.status;
+  const fn = () => {
+    //0-> prepartion 1-> shiping 2-> deliverd
+    //statusClass: 0(done) 1(inprogress) 2(undone)
+  };
 
   const statusClass = (index) => {
     if (index < 1) return styles.done;
@@ -33,7 +37,7 @@ const Order = ({ order, error }) => {
             </div>
           </div>
 
-          <div className={statusClass(1)}>
+          <div className={statusClass(status > 0 ? 0 : 1)}>
             <Image src="/img/bake.png" alt="" width={60} height={60} />
             <span className={styles.stateTitle}>prepartion</span>
 
@@ -42,7 +46,7 @@ const Order = ({ order, error }) => {
             </div>
           </div>
 
-          <div className={statusClass(2)}>
+          <div className={statusClass(2 - status)}>
             <Image src="/img/bike.png" alt="" width={60} height={60} />
             <span className={styles.stateTitle}>shipping</span>
 
@@ -51,7 +55,7 @@ const Order = ({ order, error }) => {
             </div>
           </div>
 
-          <div className={statusClass(2)}>
+          <div className={statusClass(status == 2 ? 0 : 2)}>
             <Image src="/img/delivered.png" alt="" width={60} height={60} />
             <span className={styles.stateTitle}>delivered</span>
 
