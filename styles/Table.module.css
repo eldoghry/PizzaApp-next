@@ -1,0 +1,49 @@
+.table {
+  /* width: 100%; */
+  border-spacing: 2rem;
+  text-align: left;
+}
+
+.tr {
+  font-size: var(--font-size-medium);
+}
+
+.tr th {
+  text-transform: uppercase;
+}
+
+.tr th:first-child {
+  padding-left: 1rem;
+}
+
+.tr td {
+  color: var(--color-grey-dark);
+  font-size: var(--font-size-large);
+}
+
+.name {
+  text-transform: uppercase;
+  color: var(--color-main);
+  font-weight: 500;
+}
+
+.extras {
+  font-size: var(--font-size-medium);
+}
+
+.subtotal {
+  font-weight: 700;
+}
+
+/* .price::before, */
+.quantity::before,
+.subtotal::before {
+  content: "$";
+}
+
+.imgContainer {
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  cursor: pointer;
+}

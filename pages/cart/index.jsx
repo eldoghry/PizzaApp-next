@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { reset } from "../../redux/cartSlice";
 import CodOrderDetails from "../../components/CodOrderDetails";
+import Table from "../../components/Table";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -108,7 +109,7 @@ const Cart = () => {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <table className={styles.table}>
+        {/* <table className={styles.table}>
           <thead>
             <tr className={styles.tr}>
               <th>product</th>
@@ -160,7 +161,9 @@ const Cart = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
+
+        <Table data={cart.products} type="cart" />
       </div>
       <div className={styles.right}>
         <div className={styles.wrapper}>

@@ -1,6 +1,7 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
 import axios from "axios";
+import Table from "../../components/Table";
 
 const Order = ({ order, error }) => {
   if (error) {
@@ -19,35 +20,7 @@ const Order = ({ order, error }) => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.row}>
-          <table className={styles.table}>
-            <thead>
-              <tr className={styles.tr}>
-                <th>Order ID</th>
-                <th>customer</th>
-                <th>address</th>
-                <th>total</th>
-              </tr>
-            </thead>
-            <tbody className={styles.tbody}>
-              <tr className={styles.tr}>
-                <td>
-                  <span className={styles.id}>{order._id}</span>
-                </td>
-
-                <td>
-                  <span className={styles.customer}>{order.customer}</span>
-                </td>
-
-                <td>
-                  <span className={styles.address}>{order.address}</span>
-                </td>
-
-                <td>
-                  <span className={styles.subtotal}>{order.total}</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <Table data={order} type="order" />
         </div>
 
         <div className={styles.row}>

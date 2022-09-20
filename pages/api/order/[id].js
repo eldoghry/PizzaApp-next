@@ -21,8 +21,8 @@ export default async function handler(req, res) {
 
   if (method === "PUT") {
     try {
-      const order = await Order.updateOne(req.body);
-      res.status(201).json({ order });
+      const order = await Order.findByIdAndUpdate(id, req.body, { new: true });
+      res.status(200).json({ order });
     } catch (error) {
       res.status(500).json({ error });
     }
@@ -30,8 +30,8 @@ export default async function handler(req, res) {
 
   if (method === "DELETE") {
     try {
-      const order = await Order.findOneAndDelete(id);
-      res.status(204);
+      await Order.findOneAndDelete(id);
+      res.status(200).json("order has been deleted");
     } catch (error) {
       res.status(500).json({ error });
     }
