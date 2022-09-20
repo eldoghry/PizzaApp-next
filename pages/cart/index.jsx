@@ -12,8 +12,14 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 
+import { useDispatch } from "react-redux";
+import { reset } from "../../redux/cartSlice";
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
   const [checkout, setCheckout] = useState(false);
   const router = useRouter();
   // PAYPAL
@@ -22,12 +28,14 @@ const Cart = () => {
   const style = { layout: "vertical" };
 
   const createOrder = async (data) => {
-    console.log(data);
     const res = await axios.post("http://localhost:3000/api/order", data);
 
     const { order } = res.data;
 
-    res.status === 201 && router.push(`order/${order._id}`);
+    if (res.status === 201) {
+      dispatch(reset());
+      router.push(`order/${order._id}`);
+    }
   };
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -79,6 +87,7 @@ const Cart = () => {
                 address:
                   details.purchase_units[0].shipping.address.address_line_1,
                 status: 0, //pending
+                method: 1, //paypal
                 total: amount,
               });
             });

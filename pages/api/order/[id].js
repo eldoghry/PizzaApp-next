@@ -11,9 +11,9 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const orders = await Order.findById(IDBDatabase);
+      const order = await Order.findById(id);
 
-      res.status(200).json({ orders });
+      res.status(200).json({ order });
     } catch (error) {
       res.status(500).json({ error });
     }

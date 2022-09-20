@@ -60,6 +60,14 @@ a {
   border: 3px solid #ffffff;
 }
 
+.error {
+  width: 100%;
+  height: 50vh;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 480px) {
   html,
   body {

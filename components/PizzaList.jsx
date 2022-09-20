@@ -2,6 +2,9 @@ import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
 
 const PizzaList = ({ pizzaList }) => {
+  if (!pizzaList.length) {
+    return <p>Looding...</p>;
+  }
   return (
     <div className={styles.container} id="products">
       <h1 className={styles.title}>The best pizza in town</h1>

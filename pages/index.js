@@ -13,7 +13,7 @@ export default function Home({ pizzaList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Features /> */}
+      <Features />
       <PizzaList pizzaList={pizzaList} />
     </div>
   );
