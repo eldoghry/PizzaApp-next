@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 
 import { useDispatch } from "react-redux";
 import { reset } from "../../redux/cartSlice";
+import CodOrderDetails from "../../components/CodOrderDetails";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -21,6 +22,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const [checkout, setCheckout] = useState(false);
+  const [cash, setCash] = useState(false);
   const router = useRouter();
   // PAYPAL
   const amount = cart.total;
@@ -100,7 +102,7 @@ const Cart = () => {
   // END OF PAYPAL
 
   if (!cart || !cart.products.length) {
-    return <p>empty cart</p>;
+    return <p className="error">empty cart</p>;
   }
 
   return (
@@ -183,7 +185,7 @@ const Cart = () => {
           )}
 
           {checkout && (
-            <button className={styles.btn} onClick={() => {}}>
+            <button className={styles.btn} onClick={() => setCash(true)}>
               cash on delivery
             </button>
           )}
@@ -208,6 +210,14 @@ const Cart = () => {
           )}
         </div>
       </div>
+
+      {cash && (
+        <CodOrderDetails
+          createOrder={createOrder}
+          total={cart.total}
+          closeModel={setCash}
+        />
+      )}
     </div>
   );
 };

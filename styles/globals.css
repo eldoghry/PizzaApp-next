@@ -68,6 +68,25 @@ a {
   font-size: 2rem;
 }
 
+.btn {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0.9rem 1.2rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  filter: brightness(0.9);
+}
+
+.btn-green {
+  background-color: teal;
+  color: white;
+}
+
 @media screen and (max-width: 480px) {
   html,
   body {

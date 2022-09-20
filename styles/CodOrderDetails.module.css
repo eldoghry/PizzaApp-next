@@ -1,0 +1,89 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.389);
+  z-index: 1000;
+  font-size: 1.6rem;
+}
+
+.wrapper {
+  background-color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  /* height: 30vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.heading {
+  font-size: 1.6rem;
+}
+
+.closeModel {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeModel:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: orange;
+}
+
+.item {
+  width: 100%;
+}
+
+.item input,
+.item textarea {
+  border: none;
+  background-color: rgba(239, 238, 238, 0.586);
+  padding: 0.7rem 1.2rem;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.item input:focus,
+.item textarea:focus {
+  border-color: orange;
+}
+
+.item input:placeholder-shown {
+  text-transform: capitalize;
+}
+
+.item label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+.item {
+  margin-bottom: 2rem;
+}
+
+.msg {
+  font-size: 1.2rem;
+  color: red;
+  /* text-transform: capitalize; */
+  margin-top: 1rem;
+}
