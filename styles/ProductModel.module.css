@@ -1,0 +1,154 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.389);
+  z-index: 1000;
+  font-size: 1.6rem;
+}
+
+.wrapper {
+  background-color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  /* height: 30vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.heading {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.closeModel,
+.extraAdd {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeModel:hover,
+.extraAdd:hover {
+  font-size: 1.2rem;
+  color: white;
+  background-color: orange;
+}
+
+.item {
+  width: 100%;
+}
+
+.item input,
+.item textarea,
+.prices input,
+.extra input {
+  border: none;
+  background-color: rgba(239, 238, 238, 0.586);
+  padding: 0.7rem 1.2rem;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.item input:focus,
+.item textarea:focus,
+.prices input:focus {
+  border-color: orange;
+}
+
+.item input:placeholder-shown {
+  text-transform: capitalize;
+}
+
+.item label {
+  display: block;
+  /* font-weight: 500; */
+
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+.item {
+  margin-bottom: 2rem;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.prices label {
+  margin-right: 2rem;
+}
+
+.prices input {
+  width: 80px;
+  margin-right: 2rem;
+}
+
+.extra {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.extra label {
+  margin-bottom: 1rem;
+}
+
+.extraAdd {
+  top: 0;
+  right: 2rem;
+}
+
+.option {
+  display: flex;
+}
+
+.option input:first-child {
+  margin-right: 2rem;
+  flex: 1;
+}
+
+.option input:last-child {
+  width: 80px;
+}
+.choosen span {
+  margin-right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+}
+
+.choosen span:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.msg {
+  font-size: 1.2rem;
+  color: red;
+  /* text-transform: capitalize; */
+  margin-top: 1rem;
+}

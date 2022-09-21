@@ -84,6 +84,18 @@ function Table({ data, type, updateOrderStatus }) {
               </span>
             </td>
           )}
+
+          {type === "adminProducts" && (
+            <td>
+              <button
+                className="btn btn-small btn-green"
+                style={{ marginRight: "1rem" }}
+              >
+                edit
+              </button>
+              <button className="btn btn-small btn-danger">delete</button>
+            </td>
+          )}
         </tr>
       ));
     } else if (type === "order") {

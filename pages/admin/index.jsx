@@ -2,9 +2,12 @@ import Table from "../../components/Table";
 import styles from "./../../styles/Admin.module.css";
 import axios from "axios";
 import { useState } from "react";
+import ProductModel from "../../components/ProductModel";
 
 function Admin({ products, orders }) {
   const [ordersList, setOrdersList] = useState(orders);
+  const [productsList, setProductsList] = useState(products);
+  const [openModel, setOpenModel] = useState(false);
 
   const handleNextStatus = async (id) => {
     const status = ordersList.filter((o) => o._id === id)[0].status;
@@ -15,10 +18,25 @@ function Admin({ products, orders }) {
           status: status + 1,
         });
 
-        setOrdersList([res.data.order, ...orders.filter((o) => o._id !== id)]);
+        setOrdersList([
+          res.data.order,
+          ...ordersList.filter((o) => o._id !== id),
+        ]);
       } catch (error) {
         console.log(error);
       }
+    }
+  };
+
+  const createPizza = async (data) => {
+    try {
+      const res = await axios.post(`http://localhost:3000/api/product/`, data);
+
+      console.log(res);
+      setProductsList([...productsList, res.data.product]);
+      setOpenModel(false);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -26,9 +44,21 @@ function Admin({ products, orders }) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1 className={styles.heading}>Admin dashboard</h1>
+        <button
+          className="btn btn-danger"
+          style={{ position: "absolute" }}
+          onClick={() => setOpenModel(true)}
+        >
+          create pizza
+        </button>
+
         <div className={styles.products}>
           {products.length > 0 && (
-            <Table data={products} type="adminProducts" style={{ flex: 1 }} />
+            <Table
+              data={productsList}
+              type="adminProducts"
+              style={{ flex: 1 }}
+            />
           )}
 
           {products.length === 0 && <p>Loading .... </p>}
@@ -44,6 +74,10 @@ function Admin({ products, orders }) {
           {ordersList.length === 0 && <p>Loading .... </p>}
         </div>
       </div>
+
+      {openModel && (
+        <ProductModel openModel={setOpenModel} createPizza={createPizza} />
+      )}
     </div>
   );
 }
