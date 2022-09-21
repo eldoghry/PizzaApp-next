@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-  padding: 5rem;
+  padding: 3rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -18,13 +18,16 @@
 }
 
 .products {
-  max-width: 600px;
+  /* max-width: 600px; */
   justify-content: center;
-  justify-self: center;
+  justify-self: left;
   overflow-y: scroll;
+  max-height: 40rem;
 }
 
 .orders {
+  justify-self: right;
+  max-width: 600px;
   max-height: 40rem;
   overflow-y: scroll;
 }

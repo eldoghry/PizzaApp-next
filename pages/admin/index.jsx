@@ -84,7 +84,18 @@ function Admin({ products, orders }) {
 
 export default Admin;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
+  const { token } = ctx.req.cookies;
+
+  if (!token || token !== process.env.TOKEN) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: true,
+      },
+    };
+  }
+
   const productsRes = await axios.get("http://localhost:3000/api/product");
   const ordersRes = await axios.get("http://localhost:3000/api/order");
 
